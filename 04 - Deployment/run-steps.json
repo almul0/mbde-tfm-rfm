@@ -1,0 +1,15 @@
+[
+    {
+      "Name": "Run segmentation",
+      "Args": ["--deploy-mode","cluster",
+               "--master","yarn",
+               "--conf","spark.yarn.submit.waitAppCompletion=true",
+                "s3a://mbde-tfm-grupo3/run-segmentation.py",
+                "--input", "s3a://tfmbigdata/Files_Segunda_Entrega/tickets_10.json",
+                "--model-input", "s3a://mbde-tfm-grupo3/kmeans_model",
+                "--prediction-output", "s3a://mbde-tfm-grupo3/run_output",
+                "--quartile-input", "s3a://mbde-tfm-grupo3/quartiles"],
+      "ActionOnFailure": "CONTINUE",
+      "Type": "spark"
+    }
+]
